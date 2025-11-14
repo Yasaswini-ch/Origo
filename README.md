@@ -1,4 +1,4 @@
-# ORIGO — Where Ideas Become Software.
+# ORIGO — The Origin of Every SaaS.
 
 **Origo — The Origin of Every SaaS.**
 

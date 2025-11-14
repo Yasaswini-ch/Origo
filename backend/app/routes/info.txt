@@ -1,0 +1,1 @@
+Placeholder routes directory for generic-saas-app. Main API is defined in app/main.py with CRUD endpoints for /api/items.

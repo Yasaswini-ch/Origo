@@ -458,14 +458,14 @@ These provide the core generation, persistence, and packaging workflows.
 
 ## 7. TEAM USAGE NOTES
 
-### Spark — ML Lead
+### Yasaswiini — ML Lead
 
-Spark is responsible for:
+Yasaswini is responsible for:
 - Designing and refining the LLM prompts (Prompt A, B, C, etc.).
 - Ensuring JSON outputs are consistent and schema-compliant.
 - Integrating new ML capabilities (test generation, docs, deployment config).
 
-Spark typically:
+Yasaswini typically:
 - Edits `app/prompts/*.txt`.
 - Adjusts `llm_service.run_prompt` behavior.
 - Defines new Pydantic schemas for richer outputs.

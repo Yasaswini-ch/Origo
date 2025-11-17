@@ -54,7 +54,7 @@ Under the hood, Origo uses:
 - A packaging layer that saves files to disk and prepares ZIP archives
 
 Origo is built by a trio team:
-- **Spark — ML Lead**
+- **ML Lead**
 - **Frontend Lead**
 - **Backend Lead**
 

@@ -1,80 +1,102 @@
-import asyncio
+import httpx
 import json
-import os
-from typing import Any, Dict
+import re
+import logging
 
-try:
-    import openai
-except ImportError:  # pragma: no cover
-    openai = None  # type: ignore
+logger = logging.getLogger("uvicorn")
+
+OLLAMA_URL = "http://localhost:11434/api/generate"
+MODEL_NAME = "llama3.1"   # <---- YOUR MODEL
 
 
-async def run_prompt(prompt: str) -> Dict[str, Any]:
-    """Execute a text prompt against the OpenAI API and return parsed JSON.
-
-    If OpenAI is not configured (no library or no OPENAI_API_KEY), fall back to a
-    small, deterministic stub response so the app can run locally without keys.
+# -------- JSON Extractor -------- #
+def extract_json_block(text: str):
     """
+    Extracts the first {...} JSON object from the LLM output.
+    Removes code fences and ignores surrounding garbage.
+    """
+    text = text.replace("```json", "").replace("```", "").strip()
 
-    api_key = os.getenv('OPENAI_API_KEY')
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        return None
+    return text[start:end + 1]
 
-    # Fallback: no OpenAI available → return a stub project/component/preview.
-    if openai is None or not api_key:
-        # Try to infer which prompt is being used based on keywords.
-        lower = prompt.lower()
-        if 'frontend_files' in lower and 'backend_files' in lower:
-            # Full project generation stub
-            return {
-                'project_id': 'stub-project',
-                'status': 'success',
-                'frontend_files': {
-                    'src/index.js': "console.log('stub frontend');",
-                },
-                'backend_files': {
-                    'app/main.py': "print('stub backend')",
-                },
-                'README': '# Stub Project\nGenerated without OpenAI; replace with real generation when configured.',
-            }
-        if 'component_name' in lower:
-            # Component generation stub
-            return {
-                'component_name': 'AutoComponent.jsx',
-                'component_code': (
-                    "import React from 'react';\n\n"
-                    "export default function AutoComponent(){\n"
-                    "  return <div>AutoComponent (stub)</div>;\n"
-                    "}\n"
-                ),
-            }
-        if 'frontend_files_json' in lower:
-            # Preview stub
-            return {
-                'html': '<div>Preview stub (no OpenAI configured)</div>',
-                'instructions': 'Configure OPENAI_API_KEY to get real previews.',
-            }
 
-        # Generic fallback
-        return {'raw': 'Stub response (no OpenAI configured).'}
+# -------- JSON Cleaner -------- #
+def _cleanup_json_like(text: str) -> str:
+    """Clean JSON-like text to handle minor model mistakes."""
 
-    # Real OpenAI call path
-    openai.api_key = api_key
+    # Remove comments
+    cleaned_lines = []
+    for line in text.splitlines():
+        if "//" in line:
+            line = line.split("//", 1)[0]
+        cleaned_lines.append(line)
+    cleaned = "\n".join(cleaned_lines)
 
-    loop = asyncio.get_running_loop()
+    # Remove trailing commas
+    cleaned = re.sub(r",\s*([}\]])", r"\1", cleaned)
 
-    def _call() -> str:
-        completion = openai.ChatCompletion.create(
-            model='gpt-4o-mini',
-            messages=[{'role': 'user', 'content': prompt}],
-            temperature=0.2,
-        )
-        message = completion.choices[0].message
-        if isinstance(message, dict):
-            return message.get('content', '')
-        return getattr(message, 'content', '')
+    # Remove control characters
+    cleaned = re.sub(r"[\x00-\x1f]", "", cleaned)
 
-    text = await loop.run_in_executor(None, _call)
+    return cleaned
+
+
+# -------- Main LLM runner -------- #
+async def run_prompt(full_prompt: str) -> dict:
+    """
+    Sends the prompt to Ollama model and ensures only valid JSON is returned.
+    Returns a Python dict.
+    """
+    logger.info(f"Sending prompt to Ollama using model: {MODEL_NAME}")
+
+    safe_prompt = f"""
+You MUST return ONLY valid JSON.
+Do NOT include markdown, explanations, text, or code fences.
+If you cannot produce valid JSON, reply with:
+{{"error":"json_error"}}
+
+Return output for this prompt:
+{full_prompt}
+"""
+
+    payload = {
+        "model": MODEL_NAME,
+        "prompt": safe_prompt,
+        "stream": False
+    }
 
     try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        return {'raw': text}
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(OLLAMA_URL, json=payload)
+            raw_output = response.json().get("response", "")
+    except httpx.ReadTimeout:
+        logger.error("LLM request timed out, falling back to stub json_error")
+        return {"error": "json_error", "raw_output": "timeout"}
+
+    logger.debug(f"RAW MODEL OUTPUT (first 500 chars): {raw_output[:500]}")
+
+    # Model intentionally returned fallback JSON
+    if raw_output.strip() == '{"error":"json_error"}':
+        return {"error": "json_error", "raw_output": raw_output}
+
+    # Extract JSON
+    json_str = extract_json_block(raw_output)
+    if not json_str:
+        return {"error": "json_error", "raw_output": raw_output}
+
+    cleaned_json = _cleanup_json_like(json_str)
+
+    try:
+        data = json.loads(cleaned_json)
+        if not isinstance(data, dict):
+            return {"error": "json_error", "raw_output": raw_output}
+        return data
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON decoding failed: {e}")
+        return {"error": "json_error", "raw_output": raw_output}
+
+

@@ -2,6 +2,9 @@
 
 **Origo — The Origin of Every SaaS.**
 
+[![Python Tests](https://github.com/Yasaswini-ch/Origo/actions/workflows/python-tests.yml/badge.svg)](https://github.com/Yasaswini-ch/Origo/actions/workflows/python-tests.yml)
+[![codecov](https://codecov.io/gh/Yasaswini-ch/Origo/branch/main/graph/badge.svg)](https://codecov.io/gh/Yasaswini-ch/Origo)
+
 Origo is an AI-powered Micro-SaaS generator that transforms high-level product ideas into running software. It takes user input (idea, target users, features, and tech stack) and, via machine learning prompts, generates a complete frontend, backend, and README.
 
 ---

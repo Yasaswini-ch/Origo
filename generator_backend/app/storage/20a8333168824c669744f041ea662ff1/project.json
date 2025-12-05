@@ -1,0 +1,27 @@
+{
+  "project_id": "20a8333168824c669744f041ea662ff1",
+  "created_at": "2025-11-21T08:58:16.872125Z",
+  "updated_at": "2025-11-21T08:58:16.872125Z",
+  "idea": "AI Personal Planner",
+  "target_users": "students",
+  "features": [
+    "tasks",
+    "calendar",
+    "reminders"
+  ],
+  "stack": "react+fastapi",
+  "frontend_files": [
+    "public/index.html",
+    "src/App.jsx",
+    "src/index.js"
+  ],
+  "backend_files": [
+    "app/main.py",
+    "app/models/__init__.py",
+    "app/routes/__init__.py",
+    "app/routes/api.py",
+    "app/schemas/__init__.py",
+    "app/services/__init__.py"
+  ],
+  "version": "1.0.0"
+}

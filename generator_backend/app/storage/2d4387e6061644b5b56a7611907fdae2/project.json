@@ -1,0 +1,28 @@
+{
+  "project_id": "2d4387e6061644b5b56a7611907fdae2",
+  "created_at": "2025-11-21T09:15:19.414963Z",
+  "updated_at": "2025-11-21T09:15:19.414963Z",
+  "idea": "AI Micro-SaaS Generator",
+  "target_users": "developers",
+  "features": [
+    "frontend generator",
+    "backend generator",
+    "zip export",
+    "auth"
+  ],
+  "stack": "react+fastapi",
+  "frontend_files": [
+    "public/index.html",
+    "src/App.jsx",
+    "src/index.js"
+  ],
+  "backend_files": [
+    "app/main.py",
+    "app/models/__init__.py",
+    "app/routes/__init__.py",
+    "app/routes/api.py",
+    "app/schemas/__init__.py",
+    "app/services/__init__.py"
+  ],
+  "version": "1.0.0"
+}

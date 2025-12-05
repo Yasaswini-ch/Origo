@@ -15,6 +15,10 @@ class GenerateRequest(BaseModel):
 class GenerateResponse(BaseModel):
     project_id: str
     status: str
+    frontend_files: Dict[str, str]
+    backend_files: Dict[str, str]
+    README: str
+    metadata: Dict[str, Any]
 
 
 class ComponentRequest(BaseModel):
@@ -35,3 +39,15 @@ class PreviewRequest(BaseModel):
 class PreviewResponse(BaseModel):
     html: str
     instructions: str
+
+
+class QualityRequest(BaseModel):
+    project_id: Optional[str] = None
+    data: Optional[Dict[str, Any]] = None
+
+
+class QualityResponse(BaseModel):
+    name: str
+    ok: bool
+    issues: list[str]
+    summary: Dict[str, Any]

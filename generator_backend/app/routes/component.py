@@ -2,8 +2,12 @@ from pathlib import Path
 
 from fastapi import APIRouter, HTTPException
 
-from app.models.schemas import ComponentRequest, ComponentResponse
-from app.services.llm_service import run_prompt
+from ..models.schemas import ComponentRequest, ComponentResponse
+from ..services.llm_service import run_prompt
+from ..services.metadata_service import add_frontend_file_to_metadata, read_metadata
+from ..services import file_service
+from ..services.zip_service import create_zip
+import logging
 
 router = APIRouter(tags=['component'])
 
@@ -47,3 +51,36 @@ async def generate_component(payload: ComponentRequest) -> ComponentResponse:
     )
 
     return ComponentResponse(component_name=component_name, component_code=component_code)
+
+
+@router.post('/projects/{project_id}/components')
+async def save_component_to_project(project_id: str, payload: ComponentResponse):
+    try:
+        # Ensure project exists by metadata
+        _ = read_metadata(project_id)
+    except Exception as exc:
+        raise HTTPException(status_code=404, detail=f"Project {project_id} not found") from exc
+
+    name = payload.component_name or 'AutoComponent.jsx'
+    if not (name.endswith('.jsx') or name.endswith('.js')):
+        name = f"{name}.jsx"
+    rel_path = f"src/components/{name}"
+
+    # Write component file
+    try:
+        proj_dir = file_service.BASE_STORAGE_DIR / project_id
+        target = proj_dir / 'frontend' / rel_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(payload.component_code or '', encoding='utf-8')
+        logging.info("Saved component %s for %s", rel_path, project_id)
+    except Exception as exc:  # pragma: no cover
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+    # Update metadata and rebuild zip
+    meta = add_frontend_file_to_metadata(project_id, rel_path)
+    try:
+        create_zip(project_id)
+    except Exception:  # pragma: no cover
+        pass
+
+    return {"project_id": project_id, "component_path": rel_path, "metadata": meta}

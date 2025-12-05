@@ -7,7 +7,32 @@
 
 Origo is an AI-powered Micro-SaaS generator that transforms high-level product ideas into running software. It takes user input (idea, target users, features, and tech stack) and, via machine learning prompts, generates a complete frontend, backend, and README.
 
+## Tech Stack
+
+- **Backend**
+  - Python 3.11+
+  - FastAPI + Uvicorn
+  - Pydantic for request/response models
+  - Optional OpenAI integration via `openai` Python client
+  - Local file-based storage and ZIP packaging
+
+- **Frontend**
+  - React (Create React App)
+  - Tailwind CSS for styling
+  - Custom hooks and a service layer for API integration
+
+- **Tooling & DevOps**
+  - GitHub Actions for Python tests
+  - codecov for test coverage reporting
+  - JSON-based contracts between ML, backend, and frontend
+
 ---
+
+## What This Repository Contains
+
+- `generator_backend/` — AI-powered Micro-SaaS generator backend (FastAPI).
+- `frontend/` — React + Tailwind UI for driving the generator and downloading projects.
+- `backend/` — Example todo API (not required for Origo core, useful as a reference).
 
 ## Quickstart
 
@@ -64,6 +89,21 @@ Origo is built by a trio team:
 ---
 
 ## 1. PROJECT OVERVIEW
+
+### Current Implementation
+
+- **End-to-end generator flow**
+  - Form in the React UI sends SaaS idea + details to the FastAPI backend.
+  - Backend calls an LLM (or stub) with structured prompts.
+  - Generated `frontend_files`, `backend_files`, and README are saved to disk.
+
+- **Downloadable artifacts**
+  - Project is stored under `generator_backend/app/storage/{project_id}`.
+  - ZIP archive (`{project_id}.zip`) can be downloaded from the UI.
+
+- **Component and preview modes**
+  - `POST /generate/component` to generate a single React component.
+  - `POST /generate/preview` to generate HTML preview for quick inspection.
 
 Origo is a Micro-SaaS generator platform. A user describes a SaaS (idea, target audience, features, stack), and Origo:
 

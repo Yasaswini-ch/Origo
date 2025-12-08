@@ -325,14 +325,11 @@ Defined calls in `src/services/api.js`:
 - `GET /projects/{project_id}/download` — download a ZIP of the generated project.
 
 CORS is enabled in `generator_backend/app/main.py` via `CORSMiddleware`, allowing the frontend on port 3000 to call the backend on port 8000 without browser CORS issues.
-
----
-
 ## 4. ARCHITECTURE
 
-### 4.1 ML pipeline
+### 4.1 ML pipeline (LLM prompts)
 
-Conceptual ML pipeline (prompts A → B → C → D → E → F → G → ...):
+Conceptual ML pipeline (prompts A → B → C → D → E → F → G ...):
 
 - **Prompt A (Full-stack generator)**
   - Input: idea, target_users, features, stack.
@@ -351,7 +348,39 @@ Conceptual ML pipeline (prompts A → B → C → D → E → F → G → ...):
 
 Currently, core implemented prompts correspond to Prompt A, B, and C.
 
-### 4.2 Generator backend routes/services
+### 4.2 ML prediction module (success + time)
+
+In addition to the LLM prompt pipeline, Origo includes a small classical ML module under:
+
+- `generator_backend/app/ml/`
+
+This module learns from (synthetic or real) generation attempts to predict:
+
+- Probability that a generation will **succeed** (binary classification).
+- Estimated **generation time in seconds** (regression).
+
+Key pieces (see `generator_backend/app/ml/README.md` for full details):
+
+- `create_sample_data.py` — Generates ~150 synthetic training examples with realistic patterns.
+- `feature_extraction.py` — Simple numeric features from `(idea, features, stack)`.
+- `train_success_predictor.py` — Trains Logistic Regression, Random Forest, and SVM; saves best to `models/success_predictor.pkl`.
+- `train_time_predictor.py` — Trains Linear Regression and Random Forest Regressor; saves best to `models/time_predictor.pkl` and plots.
+- `apply_pca.py` — Optional PCA + 2D visualization for syllabus/analysis.
+- `predictor.py` — Exposes `GenerationPredictor` with a single `predict(idea, features, stack)` method.
+
+Backend usage (conceptual):
+
+- Import and initialize once at startup:
+  - `from generator_backend.app.ml.predictor import GenerationPredictor`
+  - `predictor = GenerationPredictor()`
+- Call `predictor.predict(...)` inside a FastAPI route to return:
+  - `success_probability` (0.0→1.0)
+  - `estimated_time_seconds`
+  - `confidence` (`"high" | "medium" | "low"`)
+
+This prediction layer lets the backend/frontend show "x% chance of success, estimated ys" **before** running a full LLM-powered generation.
+
+### 4.3 Generator backend routes/services
 
 In `generator_backend/app`:
 
@@ -378,7 +407,7 @@ In `generator_backend/app`:
   - `models/schemas.py` — Pydantic models for requests/responses.
   - `utils/ids.py` — generates unique project IDs.
 
-### 4.3 Frontend integration layer (Prompt B)
+### 4.4 Frontend integration layer (Prompt B)
 
 In `frontend/src`:
 
@@ -396,7 +425,7 @@ In `frontend/src`:
   - Renders the generator UI.
   - Uses `useGenerator` and passes values to `GeneratorForm` and `ProjectViewer`.
 
-### 4.4 ZIP packaging system (Prompt C)
+### 4.5 ZIP packaging system (Prompt C)
 
 - Backend uses `zip_service.create_zip(project_id)` to:
   - Traverse `app/storage/{project_id}/frontend`.
@@ -406,7 +435,7 @@ In `frontend/src`:
 
 - The frontend’s `downloadZip` utility triggers a file download for that ZIP.
 
-### 4.5 Preview HTML bundler (Prompt E)
+### 4.6 Preview HTML bundler (Prompt E)
 
 - A conceptual HTML bundler (based on `preview_html` output) can:
   - Load React via CDN.
@@ -415,14 +444,14 @@ In `frontend/src`:
 
 This is used for quick in-browser previews without a build pipeline.
 
-### 4.6 README generator itself (Prompt F)
+### 4.7 README generator itself (Prompt F)
 
 - This README is generated/updated automatically based on:
   - `frontend_files` and `backend_files` structure.
   - `previous_readme` content.
   - `latest_action` log entry.
 
-### 4.7 JSON healer (Prompt G)
+### 4.8 JSON healer (Prompt G)
 
 - The system can apply “self-healing” logic to:
   - Fix malformed JSON from LLM outputs.

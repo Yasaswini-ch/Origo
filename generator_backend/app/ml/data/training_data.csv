@@ -1,0 +1,151 @@
+input_idea,input_features,input_stack,success,generation_time_seconds
+Portfolio website,"contacts, notes",svelte flask,1,14.9
+Personal budget tracker,"contacts, notes",vue django,1,9.49
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","articles, collections, search, permissions, analytics, insights, localization, versions",react fastapi celery postgres redis,0,36.48
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",nextjs node redis postgres,1,33.6
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",nextjs node redis postgres,0,30.42
+Habit tracker,"tasks, reminders",react fastapi,0,13.49
+Habit tracker,"projects, tickets, comments",svelte flask,1,7.97
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","products, inventory, carts, orders, payments, refunds, reviews, recommendations",vue django channels postgres,1,27.29
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react nestjs kafka postgres redis,1,33.85
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react fastapi celery postgres redis,1,31.55
+Personal budget tracker,"posts, comments, tags",react express,1,11.52
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react nestjs kafka postgres redis,1,38.51
+Issue tracker,"income, expenses, categories",svelte flask,1,12.31
+Notes app,"income, expenses, categories",nextjs node,1,12.18
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react fastapi celery postgres redis,1,33.57
+Personal budget tracker,"tasks, reminders",nextjs node,1,7.38
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",nextjs node redis postgres,1,33.4
+Portfolio website,"contacts, notes",nextjs node,1,10.39
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,1,43.85
+Landing page generator,"tasks, reminders",vue django,1,8.4
+Issue tracker,"contacts, notes",nextjs node,1,12.45
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,1,39.4
+Blog platform,"contacts, notes",nextjs node,1,9.42
+Personal budget tracker,"projects, tickets, comments",react express,1,9.22
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",vue django channels postgres,0,26.73
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","products, inventory, carts, orders, payments, refunds, reviews, recommendations",vue django channels postgres,1,34.68
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","articles, collections, search, permissions, analytics, insights, localization, versions",react fastapi celery postgres redis,1,43.35
+Landing page generator,"projects, tickets, comments",nextjs node,1,9.35
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","articles, collections, search, permissions, analytics, insights, localization, versions",vue django channels postgres,0,35.68
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","products, inventory, carts, orders, payments, refunds, reviews, recommendations",vue django channels postgres,1,25.92
+Personal budget tracker,"posts, comments, tags",react express,1,5.44
+Landing page generator,"projects, tickets, comments",react fastapi,1,6.71
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react nestjs kafka postgres redis,1,39.3
+Simple todo app,"links, clicks, stats",svelte flask,1,13.53
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react fastapi celery postgres redis,0,40.02
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react nestjs kafka postgres redis,0,34.82
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react fastapi celery postgres redis,0,31.31
+Notes app,"links, clicks, stats",nextjs node,1,10.97
+Notes app,"posts, comments, tags",svelte flask,1,13.65
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,0,32.79
+Simple todo app,"contacts, notes",svelte flask,1,8.9
+Contact manager,"projects, tickets, comments",nextjs node,1,9.99
+Landing page generator,"posts, comments, tags",nextjs node,0,14.36
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react nestjs kafka postgres redis,1,33.72
+Portfolio website,"tasks, reminders",vue django,1,7.79
+Blog platform,"links, clicks, stats",nextjs node,1,6.25
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,1,36.26
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,0,37.71
+Landing page generator,"contacts, notes",nextjs node,1,8.96
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","articles, collections, search, permissions, analytics, insights, localization, versions",react nestjs kafka postgres redis,1,39.69
+Habit tracker,"contacts, notes",vue django,1,14.47
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react fastapi celery postgres redis,1,38.95
+Notes app,"links, clicks, stats",react fastapi,1,10.83
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,1,41.08
+Landing page generator,"links, clicks, stats",nextjs node,1,8.26
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",vue django channels postgres,0,40.62
+Blog platform,"income, expenses, categories",react express,1,5.43
+Personal budget tracker,"tasks, reminders",svelte flask,1,13.01
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","articles, collections, search, permissions, analytics, insights, localization, versions",react fastapi celery postgres redis,0,33.01
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,1,35.85
+Habit tracker,"tasks, reminders",nextjs node,1,10.08
+Notes app,"posts, comments, tags",vue django,1,8.65
+Personal budget tracker,"tasks, reminders",svelte flask,1,14.78
+Personal budget tracker,"income, expenses, categories",nextjs node,1,9.0
+Habit tracker,"projects, tickets, comments",nextjs node,1,14.87
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",nextjs node redis postgres,1,38.84
+Simple todo app,"projects, tickets, comments",react fastapi,1,10.37
+Personal budget tracker,"income, expenses, categories",react fastapi,1,7.3
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","articles, collections, search, permissions, analytics, insights, localization, versions",react nestjs kafka postgres redis,1,27.95
+Portfolio website,"projects, tickets, comments",nextjs node,1,7.51
+Personal budget tracker,"links, clicks, stats",vue django,1,6.32
+Issue tracker,"links, clicks, stats",nextjs node,0,13.61
+Portfolio website,"income, expenses, categories",svelte flask,1,11.64
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react fastapi celery postgres redis,0,27.71
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","articles, collections, search, permissions, analytics, insights, localization, versions",vue django channels postgres,0,30.68
+Simple todo app,"tasks, reminders",vue django,1,11.02
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,0,27.16
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,0,28.64
+Blog platform,"income, expenses, categories",vue django,1,13.78
+Issue tracker,"projects, tickets, comments",nextjs node,1,8.55
+Habit tracker,"contacts, notes",react express,1,9.49
+Notes app,"income, expenses, categories",react express,1,9.23
+Issue tracker,"income, expenses, categories",nextjs node,1,13.71
+URL shortener,"posts, comments, tags",svelte flask,1,5.54
+Contact manager,"contacts, notes",react express,1,11.19
+Notes app,"contacts, notes",nextjs node,1,8.8
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","articles, collections, search, permissions, analytics, insights, localization, versions",vue django channels postgres,1,26.55
+Landing page generator,"tasks, reminders",vue django,1,8.8
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","articles, collections, search, permissions, analytics, insights, localization, versions",vue django channels postgres,0,38.35
+Habit tracker,"tasks, reminders",react express,1,11.63
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react nestjs kafka postgres redis,1,31.88
+Notes app,"income, expenses, categories",react fastapi,1,12.42
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","articles, collections, search, permissions, analytics, insights, localization, versions",nextjs node redis postgres,0,40.96
+Simple todo app,"links, clicks, stats",react express,1,8.14
+URL shortener,"projects, tickets, comments",vue django,1,8.01
+Issue tracker,"contacts, notes",react express,1,14.36
+Landing page generator,"links, clicks, stats",vue django,1,11.65
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react nestjs kafka postgres redis,1,35.43
+Portfolio website,"tasks, reminders",nextjs node,1,5.66
+URL shortener,"projects, tickets, comments",react express,1,8.16
+Portfolio website,"tasks, reminders",react fastapi,1,5.59
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react nestjs kafka postgres redis,1,38.36
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",react nestjs kafka postgres redis,1,37.6
+Personal budget tracker,"posts, comments, tags",react fastapi,1,7.22
+Contact manager,"links, clicks, stats",svelte flask,1,9.73
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","products, inventory, carts, orders, payments, refunds, reviews, recommendations",react fastapi celery postgres redis,0,31.03
+URL shortener,"links, clicks, stats",react fastapi,1,10.96
+Issue tracker,"links, clicks, stats",react fastapi,0,8.79
+Portfolio website,"projects, tickets, comments",react fastapi,1,7.28
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","articles, collections, search, permissions, analytics, insights, localization, versions",react nestjs kafka postgres redis,1,39.62
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","products, inventory, carts, orders, payments, refunds, reviews, recommendations",vue django channels postgres,1,38.88
+Blog platform,"posts, comments, tags",react express,1,7.48
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react fastapi celery postgres redis,0,30.92
+Blog platform,"projects, tickets, comments",nextjs node,1,14.84
+Habit tracker,"tasks, reminders",react express,1,5.19
+URL shortener,"links, clicks, stats",react fastapi,1,14.45
+Habit tracker,"contacts, notes",nextjs node,1,12.76
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,1,40.29
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","articles, collections, search, permissions, analytics, insights, localization, versions",nextjs node redis postgres,1,26.2
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","articles, collections, search, permissions, analytics, insights, localization, versions",nextjs node redis postgres,0,41.8
+URL shortener,"tasks, reminders",react express,0,10.38
+Blog platform,"posts, comments, tags",vue django,1,12.87
+Habit tracker,"income, expenses, categories",react fastapi,1,14.7
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","articles, collections, search, permissions, analytics, insights, localization, versions",react nestjs kafka postgres redis,0,39.87
+"Project management tool with Gantt charts, kanban boards, time tracking, and reporting","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react nestjs kafka postgres redis,0,39.39
+Portfolio website,"links, clicks, stats",vue django,1,8.99
+"End-to-end CRM with email automation, lead scoring, and reporting dashboards for remote teams","contacts, deals, proposals, invoices, emails, reports, workflows, integrations",vue django channels postgres,1,25.41
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",nextjs node redis postgres,1,42.61
+Habit tracker,"income, expenses, categories",react express,1,10.84
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",react fastapi celery postgres redis,1,39.98
+Simple todo app,"income, expenses, categories",vue django,1,11.67
+Blog platform,"links, clicks, stats",svelte flask,0,12.49
+Simple todo app,"posts, comments, tags",react express,0,14.96
+Habit tracker,"income, expenses, categories",react express,1,8.62
+Portfolio website,"contacts, notes",vue django,1,5.25
+"Multi-tenant SaaS platform for freelancers with invoicing, proposals, time tracking, and client portals","articles, collections, search, permissions, analytics, insights, localization, versions",nextjs node redis postgres,0,28.36
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","workspaces, projects, tasks, sprints, timelines, dependencies, reports, alerts",nextjs node redis postgres,0,32.58
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","products, inventory, carts, orders, payments, refunds, reviews, recommendations",nextjs node redis postgres,1,42.86
+Personal budget tracker,"tasks, reminders",nextjs node,1,6.4
+"AI-powered knowledge base with semantic search, analytics, and multi-language support","articles, collections, search, permissions, analytics, insights, localization, versions",react nestjs kafka postgres redis,1,44.31
+Blog platform,"contacts, notes",vue django,1,5.91
+"E-commerce marketplace with real-time inventory sync, personalized recommendations, and analytics","products, inventory, carts, orders, payments, refunds, reviews, recommendations",nextjs node redis postgres,1,35.68
+URL shortener,"contacts, notes",nextjs node,1,13.74
+Blog platform,"tasks, reminders",vue django,1,6.58
+URL shortener,"contacts, notes",react fastapi,1,9.31
+Simple todo app,"tasks, reminders",vue django,1,12.92
+Simple todo app,"tasks, reminders",svelte flask,1,5.44
+Contact manager,"tasks, reminders",vue django,1,14.42
+Notes app,"tasks, reminders",react express,1,6.86
+Issue tracker,"tasks, reminders",nextjs node,0,12.62

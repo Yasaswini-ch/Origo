@@ -32,6 +32,11 @@ jobs:
           cache: 'pip'
           cache-dependency-path: generator_backend/requirements-dev.txt
 
+      - name: Clean Python cache
+        run: |
+          find . -type d -name "__pycache__" -exec rm -rf {} +
+          find . -name "*.pyc" -delete
+      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -79,6 +84,11 @@ jobs:
           cache: 'pip'
           cache-dependency-path: generator_backend/requirements-dev.txt
 
+      - name: Clean Python cache
+        run: |
+          find . -type d -name "__pycache__" -exec rm -rf {} +
+          find . -name "*.pyc" -delete
+      
       - name: Install dev tools
         run: |
           python -m pip install --upgrade pip

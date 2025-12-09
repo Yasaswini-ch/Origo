@@ -21,14 +21,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'  # This will initialize and update submodules
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
-          cache-dependency-path: |
-            generator_backend/requirements-dev.txt
+          cache-dependency-path: generator_backend/requirements-dev.txt
 
       - name: Install dependencies
         run: |
@@ -45,9 +46,7 @@ jobs:
         if: always()
         with:
           name: test-reports-${{ matrix.python-version }}
-          path: |
-            generator_backend/reports/junit.xml
-            generator_backend/reports/coverage.xml
+          path: generator_backend/reports/*.xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -68,14 +67,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'  # This will initialize and update submodules
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
-          cache-dependency-path: |
-            generator_backend/requirements-dev.txt
+          cache-dependency-path: generator_backend/requirements-dev.txt
 
       - name: Install dev tools
         run: |

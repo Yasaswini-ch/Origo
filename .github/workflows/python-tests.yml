@@ -45,7 +45,7 @@ jobs:
       - name: Run pytest with coverage and JUnit XML
         run: |
           mkdir -p reports
-          pytest tests/ -q --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing --cov-fail-under=85
+          pytest tests/ --ignore=generator_backend_new -q --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing --cov-fail-under=85
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4

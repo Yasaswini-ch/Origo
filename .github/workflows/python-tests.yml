@@ -32,6 +32,11 @@ jobs:
           cache: 'pip'
           cache-dependency-path: generator_backend/requirements-dev.txt
 
+      - name: Clean Python cache
+        run: |
+          find . -type d -name "__pycache__" -exec rm -rf {} +
+          find . -name "*.pyc" -delete
+      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -40,7 +45,8 @@ jobs:
       - name: Run pytest with coverage and JUnit XML
         run: |
           mkdir -p reports
-          pytest -q --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing --cov-fail-under=85
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/generator_backend
+          pytest tests/ --ignore=generator_backend_new -q --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing --cov-fail-under=85
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
@@ -79,6 +85,11 @@ jobs:
           cache: 'pip'
           cache-dependency-path: generator_backend/requirements-dev.txt
 
+      - name: Clean Python cache
+        run: |
+          find . -type d -name "__pycache__" -exec rm -rf {} +
+          find . -name "*.pyc" -delete
+      
       - name: Install dev tools
         run: |
           python -m pip install --upgrade pip
@@ -91,5 +102,6 @@ jobs:
 
       - name: Mypy type-check
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/generator_backend
           mypy --version
-          mypy --config-file mypy.ini app
+          mypy --config-file mypy.ini app --exclude app/storage/

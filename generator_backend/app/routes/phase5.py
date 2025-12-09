@@ -136,12 +136,9 @@ async def error_simulation(req: QualityRequest) -> QualityResponse:
     ok_schema, schema_errors = validate_project_output(data)
     issues.extend(schema_errors)
 
-    # Simulate normalization for reporting
-    normalized = _normalize_output_dict(data)
-
     summary: Dict[str, Any] = {
         "schema_ok": ok_schema,
-        "normalized_keys": list(normalized.keys()),
+        "data_keys": list(data.keys()),
     }
 
     return QualityResponse(name="error-simulation", ok=ok_schema, issues=issues, summary=summary)

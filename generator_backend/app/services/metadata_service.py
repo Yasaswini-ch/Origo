@@ -30,14 +30,6 @@ def bump_patch_version(meta: Dict[str, Any]) -> str:
     return new
 
 
-def read_metadata(project_id: str) -> Dict[str, Any]:
-    meta_path = BASE_STORAGE_DIR / project_id / "project.json"
-    if not meta_path.exists():
-        raise NotFoundError(message="Project metadata not found", details={"project_id": project_id})
-    try:
-        return json.loads(meta_path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        raise ValidationFailedError(message="Invalid metadata file", details={"error": str(exc)})
 
 
 def write_metadata(*, project_id: str, idea: str, target_users: str, features: str, stack: str, saved: Dict[str, Any]) -> Dict[str, Any]:
@@ -208,20 +200,27 @@ def search_projects(query: str) -> List[Dict[str, Any]]:
 def _default_metadata(meta: Dict[str, Any]) -> Dict[str, Any]:
     changed = False
     if "version" not in meta or not isinstance(meta.get("version"), str):
-        meta["version"] = "1.0.0"; changed = True
+        meta["version"] = "1.0.0"
+        changed = True
     if "created_at" not in meta:
-        meta["created_at"] = _now_iso(); changed = True
+        meta["created_at"] = _now_iso()
+        changed = True
     if "updated_at" not in meta:
-        meta["updated_at"] = meta.get("created_at", _now_iso()); changed = True
+        meta["updated_at"] = meta.get("created_at", _now_iso())
+        changed = True
     for k in ("idea", "target_users", "stack"):
         if k not in meta:
-            meta[k] = ""; changed = True
+            meta[k] = ""
+            changed = True
     if not isinstance(meta.get("features"), list):
-        meta["features"] = [] ; changed = True
+        meta["features"] = []
+        changed = True
     if not isinstance(meta.get("frontend_files"), list):
-        meta["frontend_files"] = [] ; changed = True
+        meta["frontend_files"] = []
+        changed = True
     if not isinstance(meta.get("backend_files"), list):
-        meta["backend_files"] = [] ; changed = True
+        meta["backend_files"] = []
+        changed = True
     return meta, changed
 
 

@@ -13,9 +13,15 @@ def test_phase5_H_route_mapping_valid():
             "frontend_files": {
                 "src/App.jsx": "export default function App() { return <div/> }",
                 "src/index.js": "import App from './App.jsx';",
+                "public/index.html": "<!DOCTYPE html><html><head></head><body><div id='root'></div></body></html>",
             },
             "backend_files": {
                 "app/main.py": "print('ok')",
+                "app/routes/__init__.py": "# routes init",
+                "app/routes/api.py": "from fastapi import APIRouter\nrouter = APIRouter()",
+                "app/schemas/__init__.py": "# schemas init",
+                "app/models/__init__.py": "# models init",
+                "app/services/__init__.py": "# services init",
             },
             "README": "# ok",
         }

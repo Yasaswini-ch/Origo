@@ -45,6 +45,7 @@ jobs:
       - name: Run pytest with coverage and JUnit XML
         run: |
           mkdir -p reports
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/generator_backend
           pytest tests/ --ignore=generator_backend_new -q --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing --cov-fail-under=85
 
       - name: Upload test reports
@@ -101,5 +102,6 @@ jobs:
 
       - name: Mypy type-check
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/generator_backend
           mypy --version
           mypy --config-file mypy.ini app --exclude app/storage/

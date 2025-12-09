@@ -1,19 +1,12 @@
-"""Database models for the generic-saas-app backend."""
+"""Database models for the generic-saas-app backend.
 
-from sqlalchemy import Column, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+This module now only defines the legacy Item model, which uses the shared
+SQLAlchemy Base from ``app.database``.
+"""
 
-DATABASE_URL = "sqlite:///./items.db"
+from sqlalchemy import Column, Integer, String
 
-# Create the SQLite engine and session factory used across the app.
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
-
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
+from app.database import Base
 
 
 class Item(Base):

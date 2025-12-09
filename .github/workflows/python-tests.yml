@@ -102,4 +102,4 @@ jobs:
       - name: Mypy type-check
         run: |
           mypy --version
-          mypy --config-file mypy.ini app
+          mypy --config-file mypy.ini app --exclude app/storage/

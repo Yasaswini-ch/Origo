@@ -1,0 +1,3 @@
+[submodule "generator_backend/generator_backend_new"]
+	path = generator_backend/generator_backend_new
+	url = https://github.com/Amrutha2025/generator_backend_new.git
